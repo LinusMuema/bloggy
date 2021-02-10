@@ -10,11 +10,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.PORT || 2400, async () => {
     console.log('server started : 2400')
 
     //Database config
+    const uri = 'mongodb://localhost/bloggy';
     const options = {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true}
-    await mongoose.connect(process.env.MONGODB_URL, options)
+    await mongoose.connect(process.env.MONGODB_URL || uri, options)
     console.log('connected to DB successfully')
 })
