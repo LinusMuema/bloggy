@@ -1,5 +1,5 @@
 # Bloggy API
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ca475c97a452389af09b)
 ### Technology used
 * [ExpressJS](https://expressjs.com/): easily create a Nodejs server and reduce the boilerplate code in NodeJs
 * [MongoDB atlas](https://www.mongodb.com/): the database hosting the `user` and `blog` objects.
@@ -21,4 +21,3 @@ This is package contains modules with different reusable functions used around t
 2. `util` this has functions to create tokens, hash passwords etc.
 3. `response` all endpoints throw errors and this module provides a basic way of displaying the errors to the consumer.
 
-> Documentation and runnable APIs are hosted on the Postman documenter. The link to the documenter is found in the base url of the application.
