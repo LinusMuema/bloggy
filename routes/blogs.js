@@ -3,20 +3,20 @@ const router = express.Router()
 const middleware = require('../middleware')
 const controller = require('../controllers/blogs.controller')
 
-router.post('/')
+router.post('/');
 
-router.get('/')
+router.get('/');
 
-router.get('/:id')
+router.get('/:id');
 
-router.put('/:id')
+router.put('/:id');
 
-router.delete('/:id')
+router.delete('/:id');
 
-router.put('/like/:id')
+router.put('/like/:id');
 
-router.put('/unlike/:id')
+router.put('/unlike/:id');
 
-router.put('/comment/:id')
+router.put('/comment/:id');
 
 module.exports = router;
