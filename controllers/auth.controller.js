@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
     try {
         const users = await User.find({email: req.body.email})
         if (users.length === 0) {
-            response.forbidden(res, "no user with that email exists")
+            response.missing(res, "no user with that email exists")
             return
         }
 

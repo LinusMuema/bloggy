@@ -4,6 +4,7 @@ const schema = new mongoose.Schema({
     title: String,
     author: String,
     content: String,
+    comments: [],
     likes: []
 });
 
