@@ -30,4 +30,10 @@ app.listen(process.env.PORT, async () => {
     console.log('connected to DB successfully')
 });
 
+// Render the entry point
+app.set('view engine', 'pug')
+app.get('/', (req, res) => {
+    res.render('index')
+})
+
 module.exports = app;
