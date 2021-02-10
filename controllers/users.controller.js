@@ -17,7 +17,7 @@ exports.followUser = async (req, res) => {
         // convert the set back to array
         user.followers = [...set]
 
-        const update = user.save()
+        const update = await user.save()
         res.status(200).json(update)
     } catch (e) { response.serverError(res, e.message) }
 }
@@ -29,7 +29,7 @@ exports.unfollowUser = async (req, res) => {
         // remove user id from the followers array
         user.followers = user.followers.filter(id => id !== req._id)
 
-        const update = user.save()
+        const update = await user.save()
         res.status(200).json(update)
     } catch (e) { response.serverError(res, e.message) }
 }
