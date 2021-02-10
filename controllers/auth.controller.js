@@ -12,7 +12,8 @@ exports.register = async (req, res) => {
 
         const hash = await utils.hashPassword(req.body.password)
         const user = await new User({email: req.body.email, password: hash}).save()
-        res.status(200).json(user)
+        const token = await utils.generateAccessToken(user._id)
+        res.status(200).json({token, user})
 
     } catch (e) {
         response.serverError(res, e.message)
