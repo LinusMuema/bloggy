@@ -4,31 +4,28 @@ const User = require('../models/user');
 
 exports.register = async (req, res) => {
     try {
-        const users = await User.find({email: req.body.email})
-        if (users.length !== 0) {
+        const user = await User.findOne({email: req.body.email})
+        if (user) {
             response.forbidden(res, "a user with that email already exists")
             return
         }
 
         const hash = await utils.hashPassword(req.body.password)
-        const user = await new User({email: req.body.email, password: hash}).save()
-        const token = await utils.generateAccessToken(user._id)
-        res.status(200).json({token, user})
+        const newUser = await new User({email: req.body.email, password: hash}).save()
+        const token = await utils.generateAccessToken(newUser._id)
+        res.status(200).json({token, newUser})
 
-    } catch (e) {
-        response.serverError(res, e.message)
-    }
+    } catch (e) { response.serverError(res, e.message) }
 }
 
 exports.login = async (req, res) => {
     try {
-        const users = await User.find({email: req.body.email})
-        if (users.length === 0) {
+        const user = await User.findOne({email: req.body.email})
+        if (!user) {
             response.missing(res, "no user with that email exists")
             return
         }
 
-        const user = users[0]
         const matches = await utils.verifyPassword(req.body.password, user.password)
         if (!matches){
             response.forbidden(res, "passwords do not match")
@@ -38,7 +35,5 @@ exports.login = async (req, res) => {
         const token = await utils.generateAccessToken(user._id)
         res.status(200).json({ token })
 
-    } catch (e) {
-        response.serverError(res, e.message)
-    }
+    } catch (e) { response.serverError(res, e.message) }
 }
