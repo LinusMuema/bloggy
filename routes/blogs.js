@@ -5,7 +5,7 @@ const controller = require('../controllers/blogs.controller')
 
 router.post('/', middleware.verifyToken, controller.addBlog);
 
-router.get('/', middleware.verifyToken, controller.getAllBlogs);
+router.get('/', controller.getAllBlogs);
 
 router.get('/:id', [middleware.verifyToken, middleware.getBlog], controller.getBlogById);
 

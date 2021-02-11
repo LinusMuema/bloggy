@@ -1,4 +1,12 @@
-const response = require('../utils/response')
+const response = require('../utils/response');
+const User = require('../models/user');
+
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (e) { response.serverError(res, e.message) }
+}
 
 exports.getUserById = async (req, res) => {
     try {
