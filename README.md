@@ -1,5 +1,8 @@
 # Bloggy API
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ca475c97a452389af09b)
+
+You can find the documentation [here](https://documenter.getpostman.com/view/7437771/TW77giXq)
+
 ### Technology used
 * [ExpressJS](https://expressjs.com/): easily create a Nodejs server and reduce the boilerplate code in NodeJs
 * [MongoDB atlas](https://www.mongodb.com/): the database hosting the `user` and `blog` objects.
